@@ -43,7 +43,31 @@ provider "anypoint" {
   password = var.password
 }
 
+# resource "anypoint_env" "env" {
+#   name = "my-ENV"
+#   type = "Sandbox"
+#   org_id = var.org_id
+# }
+# output "env" {
+#   value = anypoint_env.env
+# }
 
+resource "anypoint_mq" "amq" {
+  defaultTtl = 604800000
+  defaultLockTtl = 120000
+  type = "queue"
+  encrypted = true
+  org_id = var.org_id
+  env_id = var.env_id
+  region_id = "eu-west-2"
+  queue_id = "terraform-queue"
+}
+
+output "amq" {
+  value = anypoint_queue.something
+}
+
+/*
 resource "anypoint_bg" "bg" {
   name = "my BG"
   parentorganizationid = var.org_id
@@ -63,6 +87,7 @@ resource "anypoint_bg" "bg" {
 output "bg" {
   value = anypoint_bg.bg
 }
+*/
 
 # data "anypoint_vpcs" "all" {
 #   orgid = var.org_id
@@ -104,10 +129,6 @@ output "bg" {
 # output "cidr_block" {
 #   value = anypoint_vpc.example[*].cidr_block
 # }
-
-
-
-
 
 
 #data "anypoint_vpcs" "all" {}

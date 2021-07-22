@@ -14,3 +14,6 @@ require (
 	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4 // indirect
 	golang.org/x/oauth2 v0.0.0-20210313182246-cd4f82c27b84 // indirect
 )
+
+// Change this to same format as other requires above once /mq is accessible
+replace github.com/mulesoft-consulting/cloudhub-client-go/mq => ../local-mq

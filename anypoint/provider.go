@@ -7,6 +7,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
+	amq "../local-mq"
 	auth "github.com/mulesoft-consulting/cloudhub-client-go/authorization"
 	env "github.com/mulesoft-consulting/cloudhub-client-go/env"
 	org "github.com/mulesoft-consulting/cloudhub-client-go/org"
@@ -48,8 +49,9 @@ func Provider() *schema.Provider {
 			"anypoint_vpc":             resourceVPC(),
 			"anypoint_bg":              resourceBG(),
 			"anypoint_rolegroup_roles": resourceRoleGroupRoles(),
-      "anypoint_rolegroup":       resourceRoleGroup(),
-      "anypoint_env":             resourceENV(),
+			"anypoint_rolegroup":       resourceRoleGroup(),
+			"anypoint_env":             resourceENV(),
+			"anypoint_mq":              resourceAmq(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"anypoint_vpcs":       dataSourceVPCs(),
@@ -58,7 +60,8 @@ func Provider() *schema.Provider {
 			"anypoint_roles":      dataSourceRoles(),
 			"anypoint_rolegroup":  dataSourceRoleGroup(),
 			"anypoint_rolegroups": dataSourceRoleGroups(),
-      "anypoint_env":        dataSourceENV(),
+			"anypoint_env":        dataSourceENV(),
+			"anypoint_mq":         dataSourceAMQ(),
 		},
 		ConfigureContextFunc: providerConfigure,
 	}
@@ -162,6 +165,7 @@ type ProviderConfOutput struct {
 	roleclient      *role.APIClient
 	rolegroupclient *rolegroup.APIClient
 	envclient       *env.APIClient
+	amqclient       *amq.APIClient
 }
 
 func newProviderConfOutput(access_token string) ProviderConfOutput {
@@ -173,12 +177,14 @@ func newProviderConfOutput(access_token string) ProviderConfOutput {
 	rolecfg := role.NewConfiguration()
 	rolegroupcfg := rolegroup.NewConfiguration()
 	envcfg := env.NewConfiguration()
+	amqcfg := amq.NewConfiguration()
 
 	vpcclient := vpc.NewAPIClient(vpccfg)
 	orgclient := org.NewAPIClient(orgcfg)
 	roleclient := role.NewAPIClient(rolecfg)
 	rolegroupclient := rolegroup.NewAPIClient(rolegroupcfg)
 	envclient := env.NewAPIClient(envcfg)
+	amqclient := amq.NewAPIClient(amqcfg)
 
 	return ProviderConfOutput{
 		access_token:    access_token,
@@ -187,5 +193,6 @@ func newProviderConfOutput(access_token string) ProviderConfOutput {
 		roleclient:      roleclient,
 		rolegroupclient: rolegroupclient,
 		envclient:       envclient,
+		amqclient:       amqclient,
 	}
 }
