@@ -37,6 +37,12 @@ variable org_id {
   description = "the anypoint organization id"
 }
 
+variable env_id {
+  type        = string
+  default     = ""
+  description = "the anypoint environment id"
+}
+
 
 provider "anypoint" {
   username = var.username
@@ -52,20 +58,21 @@ provider "anypoint" {
 #   value = anypoint_env.env
 # }
 
-resource "anypoint_mq" "amq" {
-  defaultTtl = 604800000
-  defaultLockTtl = 120000
+/*resource "anypoint_mq" "amq" {
+  defaultttl = 604800000
+  defaultlockttl = 120000
   type = "queue"
   encrypted = true
   org_id = var.org_id
-  env_id = var.env_id
+  //env_id = var.env_id
+  env_id = "3d5af0fe-ba6b-4c52-8b5e-ed9da2fa8167"
   region_id = "eu-west-2"
-  queue_id = "terraform-queue"
+  queue_id = "tq-test11"
 }
 
 output "amq" {
-  value = anypoint_queue.something
-}
+  value = anypoint_mq.amq
+}*/
 
 /*
 resource "anypoint_bg" "bg" {

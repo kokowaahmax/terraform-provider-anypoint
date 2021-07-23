@@ -7,6 +7,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.4.4
 	github.com/mulesoft-consulting/cloudhub-client-go/authorization v0.1.0
 	github.com/mulesoft-consulting/cloudhub-client-go/env v0.0.4
+	github.com/mulesoft-consulting/cloudhub-client-go/mq v0.0.3
 	github.com/mulesoft-consulting/cloudhub-client-go/org v0.2.10
 	github.com/mulesoft-consulting/cloudhub-client-go/role v0.0.2
 	github.com/mulesoft-consulting/cloudhub-client-go/rolegroup v0.0.2
@@ -14,6 +15,3 @@ require (
 	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4 // indirect
 	golang.org/x/oauth2 v0.0.0-20210313182246-cd4f82c27b84 // indirect
 )
-
-// Change this to same format as other requires above once /mq is accessible
-replace github.com/mulesoft-consulting/cloudhub-client-go/mq => ../local-mq

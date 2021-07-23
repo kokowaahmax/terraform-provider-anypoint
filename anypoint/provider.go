@@ -7,9 +7,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	amq "../local-mq"
+	//amq "../local-mq"
 	auth "github.com/mulesoft-consulting/cloudhub-client-go/authorization"
 	env "github.com/mulesoft-consulting/cloudhub-client-go/env"
+	amq "github.com/mulesoft-consulting/cloudhub-client-go/mq"
 	org "github.com/mulesoft-consulting/cloudhub-client-go/org"
 	role "github.com/mulesoft-consulting/cloudhub-client-go/role"
 	rolegroup "github.com/mulesoft-consulting/cloudhub-client-go/rolegroup"
@@ -51,7 +52,7 @@ func Provider() *schema.Provider {
 			"anypoint_rolegroup_roles": resourceRoleGroupRoles(),
 			"anypoint_rolegroup":       resourceRoleGroup(),
 			"anypoint_env":             resourceENV(),
-			"anypoint_mq":              resourceAmq(),
+			"anypoint_mq":              resourceMQ(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"anypoint_vpcs":       dataSourceVPCs(),
@@ -61,7 +62,7 @@ func Provider() *schema.Provider {
 			"anypoint_rolegroup":  dataSourceRoleGroup(),
 			"anypoint_rolegroups": dataSourceRoleGroups(),
 			"anypoint_env":        dataSourceENV(),
-			"anypoint_mq":         dataSourceAMQ(),
+			"anypoint_mq":         dataSourceMQ(),
 		},
 		ConfigureContextFunc: providerConfigure,
 	}

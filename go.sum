@@ -235,6 +235,8 @@ github.com/mulesoft-consulting/cloudhub-client-go/env v0.0.3 h1:AebKhR2jCt+tAJdN
 github.com/mulesoft-consulting/cloudhub-client-go/env v0.0.3/go.mod h1:Rn28o4E40Qt9fNIQVazsVUC/gXExZzl1vD0MWH77Ucw=
 github.com/mulesoft-consulting/cloudhub-client-go/env v0.0.4 h1:jlUQaPC7uyIhQqh9eqzou6EHya4hxGGYP2No7/AnxiI=
 github.com/mulesoft-consulting/cloudhub-client-go/env v0.0.4/go.mod h1:Rn28o4E40Qt9fNIQVazsVUC/gXExZzl1vD0MWH77Ucw=
+github.com/mulesoft-consulting/cloudhub-client-go/mq v0.0.3 h1:A1UIFLXalGAjWU41S8octlL4SjqxnWYgaL5Oo4B4BGA=
+github.com/mulesoft-consulting/cloudhub-client-go/mq v0.0.3/go.mod h1:m3wKjkhUwKAr3OyK3e9rP/KAffyaKjTYotEArDCl1dY=
 github.com/mulesoft-consulting/cloudhub-client-go/org v0.2.0 h1:SlV4PHGpd7rBqp8askYTiUeXr+BczBftgvRpHvmxCUE=
 github.com/mulesoft-consulting/cloudhub-client-go/org v0.2.0/go.mod h1:pe1s2nbylRVkYsmwQIth33UxLMT8C8wvvBTD4WJhCgg=
 github.com/mulesoft-consulting/cloudhub-client-go/org v0.2.1 h1:xXauK9z7azV8HNjJ2q33Z20tFrysUdJyUxttgsG+PnU=
